@@ -2,10 +2,11 @@
   "name": "vdm-test",
   "version": "0.0.1",
   "scripts": {
-    "test" : "mocha test/*.js"
+    "test": "mocha test/*.js"
   },
   "dependencies": {
-    "htmlparser2": "3.8.3"
+    "htmlparser2": "3.8.3",
+    "moment": "2.10.6"
   },
   "devDependencies": {
     "mocha": "2.3.3"
