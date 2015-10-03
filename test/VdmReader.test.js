@@ -39,6 +39,7 @@ describe('VdmReader', () => {
     it('should return the first vdm in html page', () => {
 
       let _expectedResult = {
+        'id'      : 1,
         'author'  : 'soupir',
         'content' : 'Aujourd\'hui, j\'ai découpé, assemblé deux par deux, puis classé dans l\'ordre décroissant une trentaine de chromosomes pour un devoir d\'SVT. ' +
                     'Après deux heures de travail, je finis enfin et pousse un soupir de soulagement. ' +
