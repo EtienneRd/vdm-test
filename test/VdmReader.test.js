@@ -4,7 +4,8 @@ const fs        = require('fs');
 const assert    = require('assert');
 const VdmReader = require('../lib/VdmReader');
 
-let vdmHtmlPage = '';
+let   VDM_HTML_PAGE     = '';
+const VDM_COUNT_IN_PAGE = 13;
 
 describe('VdmReader', () => {
 
@@ -13,22 +14,32 @@ describe('VdmReader', () => {
       if (err){
         return console.error(err);
       }
-      vdmHtmlPage = data;
+      VDM_HTML_PAGE = data;
       done();
     });
   });
 
   it('should read and store all the vdm in html page', () => {
-    let _vdmReader = new VdmReader(vdmHtmlPage);
+    let _vdmReader = new VdmReader().parseHtml(VDM_HTML_PAGE);
 
-    assert.equal(_vdmReader.vdms.length, 13);
+    assert.equal(_vdmReader.vdms.length, VDM_COUNT_IN_PAGE);
+  });
+
+  it('should read several html content and store their vdms', () => {
+    let _vdmReader = new VdmReader();
+
+    // parsing html two times
+    _vdmReader.parseHtml(VDM_HTML_PAGE);
+    _vdmReader.parseHtml(VDM_HTML_PAGE);
+
+    assert.equal(_vdmReader.vdms.length, VDM_COUNT_IN_PAGE * 2);
   });
 
   describe('getCount', () => {
     it('should count vdm in html page', () => {
-      let _vdmReader = new VdmReader(vdmHtmlPage);
+      let _vdmReader = new VdmReader().parseHtml(VDM_HTML_PAGE);
 
-      assert.equal(_vdmReader.getCount(), 13);
+      assert.equal(_vdmReader.getCount(), VDM_COUNT_IN_PAGE);
     });
   });
 
@@ -44,10 +55,9 @@ describe('VdmReader', () => {
         'date'    : '2015-10-03 15:32:00'
       };
 
-      let _vdmReader = new VdmReader(vdmHtmlPage);
+      let _vdmReader = new VdmReader().parseHtml(VDM_HTML_PAGE);
 
       assert.deepEqual(_vdmReader.getFirst(), _expectedResult);
-
     });
   });
 
