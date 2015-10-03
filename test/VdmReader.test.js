@@ -22,7 +22,7 @@ describe('VdmReader', () => {
   it('should read and store all the vdm in html page', () => {
     let _vdmReader = new VdmReader().parseHtml(VDM_HTML_PAGE);
 
-    assert.equal(_vdmReader.vdms.length, VDM_COUNT_IN_PAGE);
+    assert.equal(_vdmReader.getCount(), VDM_COUNT_IN_PAGE);
   });
 
   it('should read several html content and store their vdms', () => {
@@ -32,15 +32,7 @@ describe('VdmReader', () => {
     _vdmReader.parseHtml(VDM_HTML_PAGE);
     _vdmReader.parseHtml(VDM_HTML_PAGE);
 
-    assert.equal(_vdmReader.vdms.length, VDM_COUNT_IN_PAGE * 2);
-  });
-
-  describe('getCount', () => {
-    it('should count vdm in html page', () => {
-      let _vdmReader = new VdmReader().parseHtml(VDM_HTML_PAGE);
-
-      assert.equal(_vdmReader.getCount(), VDM_COUNT_IN_PAGE);
-    });
+    assert.equal(_vdmReader.getCount(), VDM_COUNT_IN_PAGE * 2);
   });
 
   describe('getFirst', () => {
