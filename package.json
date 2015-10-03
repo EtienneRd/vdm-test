@@ -12,5 +12,11 @@
   },
   "devDependencies": {
     "mocha": "2.3.3"
-  }
+  },
+  "description": "This program allows to load the last 200 VDM from www.viedemerde.fr and provides an API to look at them",
+  "directories": {
+    "test": "test"
+  },
+  "author": "rouillard.etienne@gmail.com",
+  "license": "ISC"
 }
