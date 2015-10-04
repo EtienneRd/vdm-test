@@ -11,7 +11,7 @@ let _vdmReader = new VdmReader();
 describe('database', () => {
 
   before((done) => {
-    fs.readFile('test/vdm_page.html', (err, data) => {
+    fs.readFile('test/html_samples/vdm_page.html', (err, data) => {
       if (err) {
         return done(err);
       }

@@ -10,7 +10,7 @@ const VDM_COUNT_IN_PAGE = 13;
 describe('VdmReader', () => {
 
   before((done) => {
-    fs.readFile('test/vdm_page.html', (err, data) => {
+    fs.readFile('test/html_samples/vdm_page.html', (err, data) => {
       if (err){
         return done(err);
       }
@@ -36,7 +36,7 @@ describe('VdmReader', () => {
   });
 
   it('should read author names with spaces', (done) => {
-    fs.readFile('test/vdm_author_with_space.html', (err, data) => {
+    fs.readFile('test/html_samples/vdm_author_with_space.html', (err, data) => {
       if (err) {
         return done(err);
       }
@@ -51,7 +51,7 @@ describe('VdmReader', () => {
   });
 
   it('should not generate html entities', (done) => {
-    fs.readFile('test/vdm_with_html_entities.html', (err, data) => {
+    fs.readFile('test/html_samples/vdm_with_html_entities.html', (err, data) => {
       if (err) {
         return done(err);
       }
