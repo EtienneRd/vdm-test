@@ -12,7 +12,7 @@ describe('VdmReader', () => {
   before((done) => {
     fs.readFile('test/vdm_page.html', (err, data) => {
       if (err){
-        return console.error(err);
+        return done(err);
       }
       VDM_HTML_PAGE = data;
       done();
