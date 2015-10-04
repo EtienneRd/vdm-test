@@ -23,7 +23,7 @@ describe('database', () => {
   });
 
   it('should return empty array if there is no data', () => {
-    assert.deepEqual(database.data(), {
+    assert.deepEqual(database.search(), {
       posts: [],
       count: 0
     });
@@ -32,7 +32,7 @@ describe('database', () => {
   it('should insert vdms in database', () => {
     database.insert(_vdmReader.vdms);
 
-    assert.equal(database.data().count, 13);
+    assert.equal(database.search().count, 13);
   });
 
   it('should find vdm by author', () => {
@@ -50,13 +50,16 @@ describe('database', () => {
       count: 1
     };
 
-    assert.deepEqual(database.findAuthor('soupir'), _expectedResult);
+    assert.deepEqual(database.search({author:'soupir'}), _expectedResult);
   });
 
   it('should find vdm by date', () => {
 
     let _askedDate = moment('2015-10-01', 'YYYY-MM-DD').format('YYYYMMDD');
-    var _result = database.findFromTo('2015-10-01', '2015-10-01');
+    var _result = database.search({
+      from: '2015-10-01',
+      to: '2015-10-01'
+    });
 
     for (var i = 0; i < _result.count; i++) {
       let _vdmDate = moment(_result.posts[i].date, 'YYYY-MM-DD HH:mm:ss').format('YYYYMMDD');
