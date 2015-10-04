@@ -19,6 +19,10 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
   "author": "rouillard.etienne@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "server.js"
 }
