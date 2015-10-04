@@ -13,6 +13,7 @@
     "request": "2.64.0"
   },
   "devDependencies": {
+    "check-build": "2.2.1",
     "mocha": "2.3.3"
   },
   "description": "This program allows to load the last 200 VDM from www.viedemerde.fr and provides an API to look at them",

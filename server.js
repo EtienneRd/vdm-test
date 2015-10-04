@@ -36,15 +36,9 @@ console.log('Server listening to %d', 3000);
  * @param  {Function} f     f(err)
  */
 function validateQuerySearch(req, f) {
-  if (req.query.from !== undefined) {
-    if (!isValidDate(req.query.from)) {
-      return f(new Error('Invalid date format in from query argument (YYYY-MM-DD)'));
-    }
-  }
-
-  if (req.query.to !== undefined) {
-    if (!isValidDate(req.query.to)) {
-      return f(new Error('Invalid date format in to query argument (YYYY-MM-DD)'));
+  if (req.query.from !== undefined || req.query.to !== undefined) {
+    if (!isValidDate(req.query.from) || !isValidDate(req.query.to)) {
+      return f(new Error('Invalid date format in query argument (YYYY-MM-DD)'));
     }
   }
 
