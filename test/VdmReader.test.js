@@ -35,6 +35,21 @@ describe('VdmReader', () => {
     assert.equal(_vdmReader.getCount(), VDM_COUNT_IN_PAGE * 2);
   });
 
+  it('should read author names with spaces', (done) => {
+    fs.readFile('test/vdm_author_with_space.html', (err, data) => {
+      if (err) {
+        return done(err);
+      }
+
+      let _vdmReader = new VdmReader();
+
+      _vdmReader.parseHtml(data);
+
+      assert.equal(_vdmReader.vdms[0].author, 'le cuisiniste');
+      done();
+    });
+  });
+
   describe('getFirst', () => {
     it('should return the first vdm in html page', () => {
 
