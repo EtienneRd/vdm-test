@@ -70,7 +70,6 @@ describe('database', () => {
 
   after((done) => {
     database.clear();
-    database.close();
     // Apparently, it is not possible to delete the file...
     fs.writeFile('test/test_db.json', '', done);
   });
