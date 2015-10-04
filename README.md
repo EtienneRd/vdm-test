@@ -6,8 +6,10 @@ This program allows to load the last 200 VDM from www.viedemerde.fr and provides
 # Installation
 ```
 $ npm install
-$ npm load
+$ node lib/vdmLoader.js
+// This command will load 200+ VDM in database
 $ npm start
+// This command starts the server on which you can query /posts
 ```
 
 # Tests

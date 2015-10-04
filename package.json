@@ -2,10 +2,11 @@
   "name": "vdm-test",
   "version": "0.0.1",
   "scripts": {
-    "load": "node lib/vdmLoader.js",
+    "start": "node server.js",
     "test": "mocha test/*.js"
   },
   "dependencies": {
+    "express": "4.13.3",
     "htmlparser2": "3.8.3",
     "lokijs": "1.3.10",
     "moment": "2.10.6",
