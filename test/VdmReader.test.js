@@ -50,6 +50,23 @@ describe('VdmReader', () => {
     });
   });
 
+  it('should not generate html entities', (done) => {
+    fs.readFile('test/vdm_with_html_entities.html', (err, data) => {
+      if (err) {
+        return done(err);
+      }
+
+      let _vdmReader = new VdmReader();
+
+      _vdmReader.parseHtml(data);
+
+      let _vdmContent = 'Aujourd\'hui, en cours d\'art, une élève me présente son dessin. C\'est monotone, triste, sans couleurs. Je lui demande ce qu\'elle en pense. "J\'aime bien, c\'est à l\'image de ma vie, sans intérêt." VDM';
+
+      assert.equal(_vdmReader.vdms[0].content, _vdmContent);
+      done();
+    });
+  });
+
   describe('getFirst', () => {
     it('should return the first vdm in html page', () => {
 
