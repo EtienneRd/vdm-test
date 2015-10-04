@@ -1,1 +1,3 @@
 node_modules*
+db.json
+test/test_db.json
