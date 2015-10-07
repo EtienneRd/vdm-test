@@ -2,6 +2,7 @@
   "name": "vdm-test",
   "version": "0.0.1",
   "scripts": {
+    "postinstall": "node lib/vdmLoader.js",
     "start": "node server.js",
     "test": "mocha test/*.js"
   },
