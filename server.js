@@ -23,6 +23,16 @@ app.get('/api/posts', function(req, res) {
   });
 });
 
+app.get('/api/posts/:id', function(req, res) {
+  let _vdm = database.get(req.params.id);
+
+  if (_vdm.post === null) {
+    return res.status(404).json({error: 'VDM does not exist'});
+  }
+
+  res.status(200).json(_vdm);
+});
+
 app.get('*', function(req, res) {
   res.status(404).json({error: 'Only route available is /api/posts'});
 });
