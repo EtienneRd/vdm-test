@@ -9,7 +9,7 @@ database.init('db.json', () => {
   console.log('Database ready!');
 });
 
-app.get('/posts', function(req, res) {
+app.get('/api/posts', function(req, res) {
   validateQuerySearch(req, (err) => {
     if (err) {
       return res.status(400).json({error: err.message});
@@ -24,7 +24,7 @@ app.get('/posts', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-  res.status(404).json({error: 'Only route available is /posts'});
+  res.status(404).json({error: 'Only route available is /api/posts'});
 });
 
 app.listen(3000);
@@ -37,13 +37,11 @@ console.log('Server listening to %d', 3000);
  * @param  {Function} f     f(err)
  */
 function validateQuerySearch(req, f) {
-  if (req.query.from !== undefined || req.query.to !== undefined) {
-    if (!isValidDate(req.query.from) || !isValidDate(req.query.to)) {
-      return f(new Error('Invalid date format in query argument (YYYY-MM-DD)'));
-    }
+  if (isValidDate(req.query.from) || isValidDate(req.query.to)) {
+    return f(null);
   }
 
-  f(null);
+  return f(new Error('Invalid date format in query argument (YYYY-MM-DD)'));
 }
 
 /**
@@ -53,6 +51,10 @@ function validateQuerySearch(req, f) {
  * @return {Boolean}      whether or not given date is a valid date
  */
 function isValidDate(date) {
-  return moment(date, 'YYYY-MM-DD').format('L') !== 'Invalid date';
+  if (date !== undefined) {
+    return moment(date, 'YYYY-MM-DD').format('L') !== 'Invalid date';
+  }
+
+  return true;
 }
 
