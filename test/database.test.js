@@ -35,6 +35,24 @@ describe('database', () => {
     assert.equal(database.search().count, 13);
   });
 
+  it('should get vdm by id', () => {
+
+    let _expectedResult = {
+      post: {
+        'id': 1,
+        'author': 'soupir',
+        'content': 'Aujourd\'hui, j\'ai découpé, assemblé deux par deux, puis classé dans l\'ordre décroissant ' +
+                    'une trentaine de chromosomes pour un devoir d\'SVT. ' +
+                    'Après deux heures de travail, je finis enfin et pousse un soupir de soulagement. ' +
+                    'Tous mes chromosomes se sont éparpillés. ' +
+                    'VDM',
+        'date': '2015-10-03 15:32:00'
+      }
+    };
+
+    assert.deepEqual(database.get(1), _expectedResult);
+  });
+
   it('should find vdm by author', () => {
 
     let _expectedResult = {
