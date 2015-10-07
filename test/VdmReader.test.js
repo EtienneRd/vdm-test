@@ -11,7 +11,7 @@ describe('VdmReader', () => {
 
   before((done) => {
     fs.readFile('test/html_samples/vdm_page.html', (err, data) => {
-      if (err){
+      if (err) {
         return done(err);
       }
       VDM_HTML_PAGE = data;
@@ -60,7 +60,9 @@ describe('VdmReader', () => {
 
       _vdmReader.parseHtml(data);
 
-      let _vdmContent = 'Aujourd\'hui, en cours d\'art, une élève me présente son dessin. C\'est monotone, triste, sans couleurs. Je lui demande ce qu\'elle en pense. "J\'aime bien, c\'est à l\'image de ma vie, sans intérêt." VDM';
+      let _vdmContent = 'Aujourd\'hui, en cours d\'art, une élève me présente son dessin. ' +
+                        'C\'est monotone, triste, sans couleurs. Je lui demande ce qu\'elle en pense. ' +
+                        '"J\'aime bien, c\'est à l\'image de ma vie, sans intérêt." VDM';
 
       assert.equal(_vdmReader.vdms[0].content, _vdmContent);
       done();
@@ -71,12 +73,13 @@ describe('VdmReader', () => {
     it('should return the first vdm in html page', () => {
 
       let _expectedResult = {
-        'author'  : 'soupir',
-        'content' : 'Aujourd\'hui, j\'ai découpé, assemblé deux par deux, puis classé dans l\'ordre décroissant une trentaine de chromosomes pour un devoir d\'SVT. ' +
+        'author': 'soupir',
+        'content': 'Aujourd\'hui, j\'ai découpé, assemblé deux par deux, puis classé dans l\'ordre décroissant ' +
+                    'une trentaine de chromosomes pour un devoir d\'SVT. ' +
                     'Après deux heures de travail, je finis enfin et pousse un soupir de soulagement. ' +
                     'Tous mes chromosomes se sont éparpillés. ' +
                     'VDM',
-        'date'    : '2015-10-03 15:32:00'
+        'date': '2015-10-03 15:32:00'
       };
 
       let _vdmReader = new VdmReader().parseHtml(VDM_HTML_PAGE);
@@ -86,6 +89,4 @@ describe('VdmReader', () => {
   });
 
 });
-
-
 

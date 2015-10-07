@@ -41,7 +41,8 @@ describe('database', () => {
       posts: [{
         'id': 1,
         'author': 'soupir',
-        'content': 'Aujourd\'hui, j\'ai découpé, assemblé deux par deux, puis classé dans l\'ordre décroissant une trentaine de chromosomes pour un devoir d\'SVT. ' +
+        'content': 'Aujourd\'hui, j\'ai découpé, assemblé deux par deux, puis classé dans l\'ordre décroissant ' +
+                    'une trentaine de chromosomes pour un devoir d\'SVT. ' +
                     'Après deux heures de travail, je finis enfin et pousse un soupir de soulagement. ' +
                     'Tous mes chromosomes se sont éparpillés. ' +
                     'VDM',
@@ -50,7 +51,7 @@ describe('database', () => {
       count: 1
     };
 
-    assert.deepEqual(database.search({author:'soupir'}), _expectedResult);
+    assert.deepEqual(database.search({author: 'soupir'}), _expectedResult);
   });
 
   it('should find vdm by date', () => {

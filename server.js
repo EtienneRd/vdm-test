@@ -12,7 +12,7 @@ database.init('db.json', () => {
 app.get('/posts', function(req, res) {
   validateQuerySearch(req, (err) => {
     if (err) {
-      return res.status(400).json({error:err.message});
+      return res.status(400).json({error: err.message});
     }
 
     res.status(200).json(database.search({
@@ -23,8 +23,8 @@ app.get('/posts', function(req, res) {
   });
 });
 
-app.get('*', function(req, res){
-  res.status(404).json({error:'Only route available is /posts'});
+app.get('*', function(req, res) {
+  res.status(404).json({error: 'Only route available is /posts'});
 });
 
 app.listen(3000);
@@ -32,6 +32,7 @@ console.log('Server listening to %d', 3000);
 
 /**
  * validateQuerySearch:
+ *
  * @param  {Object}   req   request object
  * @param  {Function} f     f(err)
  */
@@ -47,11 +48,11 @@ function validateQuerySearch(req, f) {
 
 /**
  * isValidDate: simple check with moment of given date
+ *
  * @param  {String} date  date query arg
  * @return {Boolean}      whether or not given date is a valid date
  */
 function isValidDate(date) {
   return moment(date, 'YYYY-MM-DD').format('L') !== 'Invalid date';
 }
-
 
