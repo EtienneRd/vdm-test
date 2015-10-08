@@ -5,10 +5,6 @@ const app = express();
 const database = require('./lib/database');
 const moment    = require('moment');
 
-database.init('db.json', () => {
-  console.log('Database ready!');
-});
-
 app.get('/api/posts', function(req, res) {
   validateQuerySearch(req, (err) => {
     if (err) {
@@ -37,8 +33,17 @@ app.get('*', function(req, res) {
   res.status(404).json({error: 'Only route available is /api/posts'});
 });
 
-app.listen(3000);
-console.log('Server listening to %d', 3000);
+database.init('db.json', (err) => {
+  if (err) {
+    if (err.message.includes('ENOENT')) {
+      console.log('You manually deleted the database file, that\'s mean!');
+    }
+    return console.error(err);
+  }
+
+  app.listen(3000);
+  console.log('Server listening to %d', 3000);
+});
 
 /**
  * validateQuerySearch:
