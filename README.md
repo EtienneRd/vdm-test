@@ -33,10 +33,10 @@ $ npm start
 This will start a server listening on port 3000.
 You will be able to:
 - See the last 200 VDMs via `/api/posts`
+  + Search VDMs by author (`?author=ironMan`)
+  + Search VDMs by date from (`?from=YYYY-MM-DD`)
+  + Search VDMs by date to (`?to=YYYY-MM-DD`)
 - See one VDM from its id via `/api/posts/:id`
-- Search VDMs by author (`?author=ironMan`)
-- Search VDMs by date from (`?from=YYYY-MM-DD`)
-- Search VDMs by date to (`?to=YYYY-MM-DD`)
 
 ## Refresh database
 ```
