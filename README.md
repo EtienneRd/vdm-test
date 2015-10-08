@@ -53,6 +53,8 @@ $ node lib/vdmLoader.js
 - SoC should be clearer
 - VDMs loading could and should be faster, by parallelizing pages lookups
 - Database should not be cleared at each refresh
+- Somehow, database has to be reinitialized to see the new VDMs if you are loading them
+  while the server is up. That's lame, will look into it :/
 
 # License
 
